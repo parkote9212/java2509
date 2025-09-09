@@ -2,14 +2,14 @@ package ch06.sec08.exam02;
 
 public class Computer {
 
-    int sum(int... values) {
+	int sum(int... values) {
 
-        int sum = 0;
+		int sum = 0;
 
-        for (int value : values) {
-            sum += value;
-        }
+		for (int i = 0; i < values.length; i++) {
+			sum += values[i];
+		}
 
-        return sum;
-    }
+		return sum;
+	}
 }

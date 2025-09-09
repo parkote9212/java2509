@@ -1,18 +1,23 @@
-package ch06.sec07.exam05;
+package ch06.sec07.exam03;
 
 public class Car {
 
-	String company = "현대";
+	String company = "현대자동차";
 	String model;
 	String color;
 	int maxSpeed;
 
+	Car() {
+	}
+
 	Car(String model) {
-		this(model, "은색", 250);
+		this.model = model;
+		this.color = color;
 	}
 
 	Car(String model, String color) {
-		this(model, color, 250);
+		this.model = model;
+		this.color = color;
 	}
 
 	Car(String model, String color, int maxSpeed) {
@@ -20,5 +25,4 @@ public class Car {
 		this.color = color;
 		this.maxSpeed = maxSpeed;
 	}
-
 }

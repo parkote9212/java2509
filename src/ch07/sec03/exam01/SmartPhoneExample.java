@@ -2,11 +2,11 @@ package ch07.sec03.exam01;
 
 public class SmartPhoneExample {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+		SmartPhone myPhone = new SmartPhone("스마트폰", "은색");
 
-        SmartPhone myPhone = new SmartPhone("갤럭시","빨강");
+		System.out.println(myPhone.model);
+		System.out.println(myPhone.color);
+	}
 
-        System.out.println("모델 : " + myPhone.model);
-        System.out.println("색상 : " + myPhone.color);
-    }
 }

@@ -21,9 +21,9 @@ public class CalendarExample {
             default: strWeek = "일";
         }
 
-        int apPm = now.get(Calendar.AM_PM);
+        int amPm = now.get(Calendar.AM_PM);
         String strAmPm = null;
-        if(apPm == Calendar.AM){
+        if(amPm == Calendar.AM){
             strAmPm = "오전";
         }else {
             strAmPm = "오후";

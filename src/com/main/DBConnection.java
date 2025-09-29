@@ -2,64 +2,33 @@ package com.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBConnection {
 
-	final static String URL = "jdbc:mariadb://localhost:3306/employees";
-	final static String USER = "root";
-	final static String PASS = "7305";
+	// Database connection parameters
+	private static final String DB_URL = "jdbc:mariadb://localhost:3306/test1";
+	private static final String USER = "root";
+	private static final String PASS = "7305";
 
-	public static Connection getConnection() {
-		Connection conn = null;
-
-		try {
-			conn = DriverManager.getConnection(URL, USER, PASS);
-			System.out.println("===DB 연결 성공 ==");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("===DB 연결 실패 ==");
-		}
-		return conn;
+	// DB Connection을 얻는 메소드
+	public static Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(DB_URL, USER, PASS);
 	}
 
-	public static void close(Statement stmt, Connection conn) {
+	// 자원을 닫는 메소드 (Statement, ResultSet)
+	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
-			if (stmt != null) {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
 				stmt.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			if (conn != null) {
+			if (conn != null)
 				conn.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
-		try {
-			if (pstmt != null) {
-				pstmt.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException se) {
+			se.printStackTrace();
 		}
 	}
 }
